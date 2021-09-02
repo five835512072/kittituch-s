@@ -1,14 +1,17 @@
 import type { Response, Request } from "express"
-import { connectCreateStore } from "../../model/connectCreateStore";
+import { connectCreateStore } from "../../model/shop/connectCreateStore"
+import { STATUS } from "../../constant/enum"
 
-export async function createStore(req: Request, res: Response): Promise<Response>  {
+export async function createStore(req: Request, res: Response): Promise<Response> {
   try {
-    console.log('test')
-    const x:any = await connectCreateStore(req.body)
-    return res.status(200).json(req.body);
+    const createStatus = await connectCreateStore(req.body)
 
+    if (createStatus !== STATUS.CREATE_SUCCESS) {
+      return res.status(500).json({status:createStatus})
+    }
+
+    return res.status(201).json({status:createStatus})
   } catch (error) {
-
-    return res.status(500).json(error);
+    return res.status(500).json(error)
   }
 }
