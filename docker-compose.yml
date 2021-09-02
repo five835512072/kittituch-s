@@ -1,0 +1,19 @@
+version: "3.5"
+services:
+  test:
+    container_name: node_type_v2_run
+    image: node_type_v2
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 1112:1112
+    volumes:
+      - .:/usr/src/
+    networks:
+      - node_type_v2
+
+networks:
+  node_type_v2:
+    external: true
