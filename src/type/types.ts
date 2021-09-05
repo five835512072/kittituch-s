@@ -6,7 +6,7 @@ export type BodyCreateShop = {
 }
 
 export type BodyUpdateStore = {
-  storeID: string,
+  storeID: string
   name: string
   description:string
   phoneNumber:number
@@ -15,9 +15,17 @@ export type BodyUpdateStore = {
 
 export type ResultShopCollectionAll = {
   _id: object
-  shopID:string
+  storeID:string
   name: string
   description:string
   phoneNumber:number
   address:string
+}
+
+export type BodyProduct = {
+  storeID: string
+  name: string
+  description:string
+  price:string
+  unit:string
 }

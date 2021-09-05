@@ -20,3 +20,11 @@ export const check_req_updateestore = [
 export const check_req_getstore = [
   check("storeID", "Invalid storeID").notEmpty(),
 ]
+
+export const check_req_createproduct= [
+  check("storeID", "Invalid storeID").notEmpty(),
+  check("name", "Invalid user name").notEmpty(),
+  check("description", "Invalid project description").notEmpty(),
+  check("price", "Invalid price").isInt({ min: 0}).notEmpty(),
+  check("unit", "Invalid unit").isInt({ min: 0}).notEmpty(),
+]
