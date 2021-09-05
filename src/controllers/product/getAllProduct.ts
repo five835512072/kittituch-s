@@ -8,7 +8,6 @@ export async function getAllProduct(req: Request, res: Response): Promise<Respon
       .json({ status: await connectGetAllProduct() })
 
   } catch (error) {
-
     return res.status(500).json(error);
   }
 }

@@ -1,7 +1,5 @@
 import type { Response, Request, NextFunction } from "express"
 import { connectGetStore } from "../../model/shop/connectgetstore"
-import { STATUS } from "../../constant/enum"
-import { body } from "express-validator"
 
 export async function getStore(req: Request, res: Response): Promise<Response> {
   try {
