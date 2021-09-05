@@ -5,6 +5,7 @@ export enum STATUS {
   ERROR = 'error',
   INVALID_PHONE_NUMBER = 'invalid phone number',
   INVALID_SHOP_NAME = 'invalid shop name',
-  INVALID_STORE_ID = 'invalid about store'
+  INVALID_STORE_ID = 'invalid about store',
+  INVALID_PRODUCT_ID = 'invalid product id'
 
 }

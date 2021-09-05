@@ -20,7 +20,7 @@ router.post(
   createStore,
 )
 
-router.post(
+router.patch(
   "/updatestore",
   check_req_updateestore,
   check_errors,

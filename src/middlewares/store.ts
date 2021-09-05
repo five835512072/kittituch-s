@@ -28,3 +28,11 @@ export const check_req_createproduct= [
   check("price", "Invalid price").isInt({ min: 0}).notEmpty(),
   check("unit", "Invalid unit").isInt({ min: 0}).notEmpty(),
 ]
+
+export const check_req_updateproduct= [
+  check("productID", "Invalid storeID").notEmpty(),
+  check("name", "Invalid user name").notEmpty(),
+  check("description", "Invalid project description").notEmpty(),
+  check("price", "Invalid price").isInt({ min: 0}).notEmpty(),
+  check("unit", "Invalid unit").isInt({ min: 0}).notEmpty(),
+]
