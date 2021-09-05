@@ -1,5 +1,13 @@
 Backend Developer Test
 
+
+- Build = docker-compose -f ./docker-compose.yml build
+- Run  = docker-compose -f ./docker-compose.yml up -d
+
+- Doc = https://documenter.getpostman.com/view/6938668/U16gNmxv
+
+port 1112
+
 สร้าง Api ตามที่กำหนด
 
 - ใช้ภาษาอะไรก็ได้ในการเขียน API, จัดการ DB ให้เหมาะสมกับ Requirement
