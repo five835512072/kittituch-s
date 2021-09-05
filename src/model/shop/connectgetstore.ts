@@ -8,7 +8,7 @@ import type {
 
 dotenv.config()
 
-export async function connectGetAllStore(): Promise<string|ResultShopCollectionAll[]> {
+export async function connectGetStore(storeID: string): Promise<string | ResultShopCollectionAll> {
   const client = await MongoClient.connect(
     process.env.MONGO_DB_CONNECT as string,
     { useUnifiedTopology: true }
@@ -21,12 +21,16 @@ export async function connectGetAllStore(): Promise<string|ResultShopCollectionA
   try {
     const db = client.db(process.env.DATABASE_NAME)
     const storeCollection = db.collection(process.env.COLLECTION_STORE as string)
-    
-    const shopResult: ResultShopCollectionAll[] =
-    await storeCollection.find({ }).toArray()
+
+    const storeResult: ResultShopCollectionAll =
+      await storeCollection.findOne({ storeID:storeID })
     client.close()
 
-    return shopResult
+    if (!storeResult) {
+      return STATUS.INVALID_STORE_ID
+    }
+
+    return storeResult
   } catch (error) {
     throw error
   }

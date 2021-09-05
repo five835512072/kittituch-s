@@ -21,4 +21,3 @@ export type ResultShopCollectionAll = {
   phoneNumber:number
   address:string
 }
-
