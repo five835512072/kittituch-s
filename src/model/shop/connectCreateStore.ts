@@ -13,7 +13,7 @@ dotenv.config()
 export async function connectCreateStore(bodyCreateStore: BodyCreateShop): Promise<string> {
   const client = await MongoClient.connect(
     process.env.MONGO_DB_CONNECT as string,
-    { useUnifiedTopology: true}
+    { useUnifiedTopology: true }
   )
 
   if (!client) {
@@ -25,7 +25,12 @@ export async function connectCreateStore(bodyCreateStore: BodyCreateShop): Promi
     const storeCollection = db.collection(process.env.COLLECTION_STORE as string)
     const storeID: string = uuidv4()
 
-    const shopResult: ResultShopCollectionAll = await storeCollection.findOne({ phoneNumber: bodyCreateStore.phoneNumber})
+    const shopResult: ResultShopCollectionAll =
+      await storeCollection.findOne({ name: bodyCreateStore.name })
+
+    if (shopResult) {
+      return STATUS.INVALID_SHOP_NAME
+    }
 
     await storeCollection.insertOne({
       storeID: storeID,
@@ -34,8 +39,6 @@ export async function connectCreateStore(bodyCreateStore: BodyCreateShop): Promi
       phoneNumber: bodyCreateStore.phoneNumber,
       address: bodyCreateStore.address,
     })
-
-
 
     return STATUS.CREATE_SUCCESS
   } catch (error) {

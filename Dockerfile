@@ -4,9 +4,7 @@ WORKDIR /usr/src
 COPY . /usr/src
 RUN npm install
 
-COPY . /usr/src
-
 EXPOSE 1112
 
 
-CMD npm start
+CMD [ "npm", "run", "dev"]
