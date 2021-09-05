@@ -47,3 +47,7 @@ export type BodyUpadteProduct = {
   price:string
   unit:string
 }
+
+export type BodyDeleteProduct = {
+  productID: string
+}

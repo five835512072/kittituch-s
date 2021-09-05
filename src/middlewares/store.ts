@@ -36,3 +36,7 @@ export const check_req_updateproduct= [
   check("price", "Invalid price").isInt({ min: 0}).notEmpty(),
   check("unit", "Invalid unit").isInt({ min: 0}).notEmpty(),
 ]
+
+export const check_req_deleteproduct = [
+  check("productID", "Invalid productID").notEmpty(),
+]

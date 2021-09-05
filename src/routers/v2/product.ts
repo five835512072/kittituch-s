@@ -2,8 +2,10 @@ import express from "express"
 import { getAllProduct } from "../../controllers/product/getAllProduct"
 import { createProduct } from "../../controllers/product/createProduct"
 import { updateProduct } from "../../controllers/product/updateProduct"
+import { deleteProduct } from "../../controllers/product/deleteProduct" 
 import { check_errors } from "../../middlewares/common"
 import {
+  check_req_deleteproduct,
   check_req_createproduct,
   check_req_updateproduct,
 } from "../../middlewares/store"
@@ -27,6 +29,13 @@ router.patch(
   check_req_updateproduct,
   check_errors,
   updateProduct,
+)
+
+router.delete(
+  "/deleteproduct",
+  check_req_deleteproduct,
+  check_errors,
+  deleteProduct,
 )
 
 export default router
