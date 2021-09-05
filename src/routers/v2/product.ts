@@ -4,11 +4,13 @@ import { createProduct } from "../../controllers/product/createProduct"
 import { updateProduct } from "../../controllers/product/updateProduct"
 import { deleteProduct } from "../../controllers/product/deleteProduct"
 import { getProduct } from "../../controllers/product/getproduct" 
+import { getProductInStore } from "../../controllers/product/getProductInStore"
 import { check_errors } from "../../middlewares/common"
 import {
   check_req_deleteproduct,
   check_req_createproduct,
   check_req_updateproduct,
+  check_req_getstore,
 } from "../../middlewares/store"
 
 const router = express.Router()
@@ -44,6 +46,13 @@ router.get(
   check_req_deleteproduct,
   check_errors,
   getProduct,
+)
+
+router.get(
+  "/getproductinstore",
+  check_req_getstore,
+  check_errors,
+  getProductInStore,
 )
 
 export default router
